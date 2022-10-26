@@ -58,7 +58,7 @@ var alumno = {
 };
 
 function getNombre() {
-  return this.hombre
+  return this.nombre
 }
 
 /*
@@ -78,9 +78,9 @@ let getNombreAlumno = getNombre.bind(alumno);
 function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
   return delimitadorIzquierda + cadena + delimitadorDerecha;
 }
-let textoAsteriscos = crearCadena.bind(`* *`);
-let textoGuiones = crearCadena.bind(`- -`);
-let textoUnderscore = crearCadena.bind(`_ _`);  
+let textoAsteriscos = crearCadena.bind(this, "*", "*");
+let textoGuiones = crearCadena.bind(this, "-", "-");
+let textoUnderscore = crearCadena.bind(this, "_", "_");  
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
