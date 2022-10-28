@@ -15,7 +15,7 @@ function LinkedList() {
 }
 
 LinkedList.prototype.add = function () {
-   
+  
 }
 LinkedList.prototype.remove = function () {
   
