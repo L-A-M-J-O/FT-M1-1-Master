@@ -21,7 +21,17 @@ function nFibonacci(n) {
 
 // EJERCICIO 3
 function Queue() {
-   
+   this.array = [];
+}
+Queue.prototype.size = function () {
+   return this.array.length;
+}
+Queue.prototype.enqueue = function (value) {
+   this.array.push(value)
+}
+Queue.prototype.dequeue= function () {
+   let elemento = this.array.shift();
+   return elemento
 }
 
 // No modifiquen nada debajo de esta linea
