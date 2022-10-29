@@ -22,25 +22,58 @@ LinkedList.prototype.add = function (value) {
   before = key
   return (before);
 };
-LinkedList.prototype.remove = function (value) {
-  let before = null;
-  let key = this.head;
-  let after = null;
-  let found = false;
-  while(key.data != value && key.data && !found){
-      before = key;
-      key = key.next;
-      after = key.next;
-  };
-  if(!found){
-      before.next = after;
-      key.next = null;
-      return key
+LinkedList.prototype.remove = function () {
+  let current = this.head;
+  if(current === null){
+    this.size = 0;
+    return null
   }
-  return null
+  if(current.next === null){
+    let valor = current.value;
+    this.head = null;
+    return valor
+  }
+  let valor;
+    while(current.next !== null){
+      if(current.next.next === null){
+        valor = current.next.value;
+        current.next = null;
+        break
+      }
+      current = current.next
+  }
+  return valor
 }
 LinkedList.prototype.search = function (value) {
-  
+  if(typeof value === "function"){
+    let current = this.head;
+    let valorNode = current.value;
+    if(current){
+      if(value(valorNode)){
+        return valorNode
+      }
+    }
+    if(current.next){
+      while(current.next){
+        valorNode = current.next.value
+        if(value(valorNode)){
+          return valorNode
+        }
+        current = current.next
+      }
+    }
+  }else{
+    let current = this.head
+    let valueNode = current.value
+    while(current){
+      valueNode = current.value
+      if(value === valueNode){
+        return valueNode
+      }
+      current = current.next
+    }
+  }
+  return null
 }
 
 function Node(value) {
