@@ -22,8 +22,22 @@ LinkedList.prototype.add = function (value) {
   before = key
   return (before);
 };
-LinkedList.prototype.remove = function () {
-  
+LinkedList.prototype.remove = function (value) {
+  let before = null;
+  let key = this.head;
+  let after = null;
+  let found = false;
+  while(key.data != value && key.data && !found){
+      before = key;
+      key = key.next;
+      after = key.next;
+  };
+  if(!found){
+      before.next = after;
+      key.next = null;
+      return key
+  }
+  return null
 }
 LinkedList.prototype.search = function (value) {
   
