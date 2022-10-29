@@ -22,19 +22,8 @@ LinkedList.prototype.add = function (value) {
   before = key
   return (before);
 };
-LinkedList.prototype.remove = function (value) {
-  let key = this.head;
-  let before = null;
-    if (key != null) {
-        if (key.data === value && before === null) {
-            this.head = key.next;
-        } else {
-            this.head.next = key.next
-        }
-        return null;
-    }
-  key = before
-  return before;
+LinkedList.prototype.remove = function () {
+  
 }
 LinkedList.prototype.search = function (value) {
   
