@@ -7,6 +7,19 @@ function quickSort(array) {
   // Devolver el array ordenado resultante
   // Tu código:
 
+  let pivot = array[0];
+  let left = [];
+  let right = [];
+
+  for (let x = 1; x < array.length; x++){
+    if(array[x] < pivot){
+      left.push(array[x]);
+    }else {
+      right.push(array[x]);
+    };
+  };
+  
+
 }
 
 function mergeSort(array) {

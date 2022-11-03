@@ -13,14 +13,22 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
 function LinkedList() {
   this.head = null
 }
+function Node(value) {
+  this.value = value;
+  this.next = null;
+}
+
 LinkedList.prototype.add = function (value) {
-  let before = null
-  let key = this.head;
-  while(key.next !== null){
-      key = key.next
-  };
-  before = key
-  return (before);
+  let nodo = new Node(value)
+  if(!this.head) {
+    this.head = nodo;
+  } else {
+    let current = this.head;
+    while(current.next){
+      current = current.next;
+    }
+    current.next = nodo;
+  }
 };
 LinkedList.prototype.remove = function () {
   let current = this.head;
@@ -75,12 +83,6 @@ LinkedList.prototype.search = function (value) {
   }
   return null
 }
-
-function Node(value) {
-  this.value = value;
-  this.next = null;
-}
-
 /* EJERCICIO 2
 Implementar la clase HashTable.
 Nuetra tabla hash, internamente, consta de un arreglo de buckets (slots, contenedores, o casilleros; es decir, posiciones posibles para almacenar la información), donde guardaremos datos en formato clave-valor (por ejemplo, {instructora: 'Ani'}).
