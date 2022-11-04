@@ -31,57 +31,40 @@ LinkedList.prototype.add = function (value) {
   }
 };
 LinkedList.prototype.remove = function () {
-  let current = this.head;
-  if(current === null){
-    this.size = 0;
-    return null
-  }
-  if(current.next === null){
-    let valor = current.value;
-    this.head = null;
-    return valor
-  }
-  let valor;
-    while(current.next !== null){
-      if(current.next.next === null){
-        valor = current.next.value;
-        current.next = null;
-        break
-      }
-      current = current.next
-  }
-  return valor
-}
-LinkedList.prototype.search = function (value) {
-  if(typeof value === "function"){
+  if(!this.head) return null;
+  if(!this.head.next){
     let current = this.head;
-    let valorNode = current.value;
-    if(current){
-      if(value(valorNode)){
-        return valorNode
-      }
+    this.head = null;
+    return current.value;
+  } else {
+    let current = this.head;
+    while(current.next.next != null){
+      current = current.next;
     }
-    if(current.next){
-      while(current.next){
-        valorNode = current.next.value
-        if(value(valorNode)){
-          return valorNode
-        }
-        current = current.next
-      }
+    let data = current.next.value;
+    current.next = null;
+    return data;
+  }
+}
+LinkedList.prototype.search = function (parametro) {
+  if(!this.head) return null;
+  let busqueda;
+  if(typeof parametro != 'function'){
+    busqueda = function(value){
+      return value === parametro;
     }
-  }else{
-    let current = this.head
-    let valueNode = current.value
-    while(current){
-      valueNode = current.value
-      if(value === valueNode){
-        return valueNode
-      }
-      current = current.next
+  }else {
+    busqueda = parametro;
+  }
+  let current  = this.head;
+  while(current){
+    if(busqueda(current.value)){
+      return current.value;
+    } else {
+      current = current.next;
     }
   }
-  return null
+  return null;
 }
 /* EJERCICIO 2
 Implementar la clase HashTable.
